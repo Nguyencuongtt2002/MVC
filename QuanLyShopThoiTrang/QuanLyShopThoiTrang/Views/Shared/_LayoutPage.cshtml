@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/Content/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/jquery.bxslider/jquery.bxslider.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/owl.carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/fancyBox/source/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/green.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/style_frm_dkdn.css" />
+    <link rel="stylesheet" href="/Content/css/switcher.css">
+    <script src="~/Content/lib/jquery/jquery-1.11.2.min.js"></script>
+
+    <title>MarkShop</title>
+</head>
+<body class="green" ng-app="myApp" ng-controller="HomeController">
+    <!-- HEADER -->
+    <div id="header" class="header">
+
+        @Html.Partial("_MenuTop")
+    </div>
+
+    <!---->
+    <div class="demo_changer" id="demo_changer">
+        <div class="demo-icon fa fa-shopping-cart">
+            <span class="notify notify-left" id="count-cart">0</span>
+        </div>
+        <div class="form_holder">
+            <div class="cart-block">
+                <div class="cart-block-content">
+                    <div class="cart-block-list">
+                        <div class="shop_cart">
+                            <table class="shop_table">
+                                <tbody id="show-cart">
+                                    <!--/////////////////////////////////-->
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="toal-cart">
+                        <span>Tổng Tiền :</span>
+                        <span class="toal-price pull-right" id="total_price">0đ</span>
+                    </div>
+                    <div class="cart-buttons">
+                        <a href="@Url.Action("index", "GioHang")" class="btn-check-out">Payment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+    <div class="container">
+        <!-- featured category  -->
+        <!-- end featured category -->
+        @RenderBody();
+
+
+        <!-- end featured category -->
+    </div>
+
+
+
+    <!--EN LOGIN REGISTER-->
+    <!--PEOPLE SAY-->
+    <!--END PEOPLE SAY-->
+    <!-- Footer -->
+    <footer id="footer" style="background-color:black ; color:#FFF">
+        <div class="container">
+            <!-- introduce-box -->
+            <div id="introduce-box" class="row">
+                <div class="col-md-3">
+                    <div id="address-box">
+                        <a href="#"><img src="~/Content/Images/Mark_brand.png" alt="logo" /></a>
+
+                        <div id="address-list">
+                            <div class="tit-name">Address:</div>
+                            <div class="tit-contain">999 Le Van Hien street, Ngu Hanh Son District, Danang city, Vietnam.</div>
+                            <div class="tit-name">Phone:</div>
+                            <div class="tit-contain">(+84) 511.3446.295</div>
+                            <div class="tit-name">Email:</div>
+                            <div class="tit-contain">ecoshop@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-White">
+                    <div class="row">
+                        <div class="col-sm-6" style="color: #FFF">
+                            <div class="introduce-title">CUSTOMER CARE</div>
+                            <ul id="introduce-support" class="introduce-list">
+                                <li> Mon - Fri: 7am to 8pm </li>
+                                <li>Sat & Sun: 7am to 6pm</li>
+                                <li><a href="policy-faq.html" style="color: #FFF">How to Buy</a></li>
+                                <li><a href="policy-faq.html" style="color: #FFF">How to Payment</a></li>
+                                <li><a href="policy-faq.html" style="color: #FFF">FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6" style="color: #FFF">
+                            <div class="introduce-title">Policy</div>
+                            <ul id="introduce-Account" class="introduce-list">
+                                <li style="color: #FFF"><a href="policy-faq.html" style="color: #FFF">Security Policy</a></li>
+                                <li style="color: #FFF"><a href="policy-faq.html" style="color: #FFF">Payment Policy</a></li>
+                                <li style="color: #FFF"><a href="policy-faq.html" style="color: #FFF">Return & Change Policy</a></li>
+                                <li style="color: #FFF"><a href="policy-faq.html" style="color: #FFF">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div id="contact-box">
+                        <div class="introduce-title">Subscribe to Eco Shop newsletter</div>
+                        <div class="input-group" id="mail-box">
+                            <input type="text" placeholder="Your email address" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">OK</button>
+                            </span>
+                        </div><!-- /input-group -->
+                        <div class="introduce-title">Follow Us</div>
+                        <!--<div class="social-link">-->
+                        <!--<a href="#"><i class="fa fa-facebook"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-pinterest-p"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-google-plus"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-youtube"></i></a>-->
+                        <!--</div>-->
+                        <div class="social-link">
+                            <ul class="social-icons">
+                                <li><a class="rss" data-original-title="rss" href="#"></a></li>
+                                <li><a class="facebook" data-original-title="facebook" href="#"></a></li>
+                                <li><a class="twitter" data-original-title="twitter" href="#"></a></li>
+                                <li><a class="googleplus" data-original-title="googleplus" href="#"></a></li>
+                                <li><a class="linkedin" data-original-title="linkedin" href="#"></a></li>
+                                <li><a class="youtube" data-original-title="youtube" href="#"></a></li>
+                                <li><a class="vimeo" data-original-title="vimeo" href="#"></a></li>
+                                <li><a class="skype" data-original-title="skype" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- /#introduce-box -->
+
+
+            <div id="footer-menu-box">
+                <p class="text-center">Copyrights &#169; 2016 Eco Shop. All Rights Reserved.</p>
+            </div><!-- /#footer-menu-box -->
+        </div>
+    </footer>
+
+    <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+    <!-- Script-->
+
+    <script type="text/javascript" src="/Content/lib/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/fancyBox/source/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/select2/js/select2.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/owl.carousel/owl.carousel.min.js"></script>
+
+
+
+    <script type="text/javascript" src="/Scripts/js/jquery.actual.min.js"></script>
+    <script type="text/javascript" src="/Scripts/js/theme-script.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/shoppingCart.js"></script>
+
+    <script type="text/javascript" src="/Scripts/js/layout.js"></script>
+
+
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/angular/App.js"></script>
+    <script src="~/Scripts/angular/CrudService.js"></script>
+    <script src="~/Scripts/angular/SanPham.js"></script>
+    <script src="~/Scripts/angular/TimKiem.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    </script>
+    @RenderSection("Scripts", false)
+
+</body>
+
+</html>

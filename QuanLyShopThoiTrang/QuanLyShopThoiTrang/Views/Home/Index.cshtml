@@ -1,0 +1,163 @@
+﻿@model PagedList.IPagedList<QuanLyShopThoiTrang.Models.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .btn_muangay {
+        width: 91%;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        background-image: linear-gradient(to left,#FFC312,#EE5A24,#FFC312);
+        color: #FFF;
+        padding: 10px 0px;
+        transition: 0.25s ease-in-out;
+        opacity: 0;
+        position: absolute;
+        top: 150px;
+        cursor: pointer;
+    }
+
+        .btn_muangay:hover {
+            opacity: 1;
+        }
+
+    .label {
+        position: absolute;
+        background-color: red;
+        right: 0px;
+        top: 20px;
+        font-size: 14px;
+        width: 80px;
+        height: 20px;
+        text-align: center;
+        z-index: 1000;
+    }
+</style>
+<div class="form-group pull-left">
+    <label>Tìm Kiếm : </label>
+    <label>
+        <input type="text" class="form-control" ng-model="Search" />
+    </label>
+</div>
+<p style="float:right">
+    Hiển thị:
+    <label style="margin-top:-13px" >
+        <select style="height:30px " class="form-control" ng-model="itemsPerPage">
+            <option ng-value="1">1</option>
+            <option ng-value="5">5</option>
+            <option ng-value="10">10</option>
+            <option ng-value="15">15</option>
+        </select>
+    </label>
+</p>
+<br />
+<br />
+<br />
+<div class="category-featured Vegetables">
+    <nav class="navbar nav-menu show-brand">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-brand" style="background-color:black; color:#FFF"><a href="#"> <img alt="" src="../Content/images/icon_like.png" />Sản Phẩm KM  </a></div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+
+    </nav>
+    <div class="product-featured clearfix" style="position:relative">
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="box-right">
+                    <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+                    <div class="product-list">
+                        <div ng-repeat="k in list |filter:Search|limitTo:itemsPerPage: (currentPage - 1 ) * itemsPerPage ">
+                            <li class="col-sm-4 product-item" style="height: 300px; list-style-type:none">
+                                <div class="left-block">
+                                    <a style="height:180px">
+                                        <img class=" img-rounded" alt="product"
+                                             src="/Content/Images/{{k.Anh}}" />
+                                    </a>
+
+                                    <div class="quick-view">
+                                        <a title="Add to my wishlist" class="heart" href="#"></a>
+                                        <a title="Add to compare" class="compare" href="#"></a>
+                                        <a title="Quick view" href="~/Content/Images/{{k.Anh}}" class="search fancybox-button"></a>
+                                    </div>
+                                    <div class="label">giảm {{k.giamgia}} %</div>
+                                    <input ng-click="muahang(k.MaSP)" class="btn_muangay" type="button" value="MUA NGAY" />
+                                    <div class="bestseller"></div>
+                                </div>
+                                <div class="right-block">
+                                    <h5 class="product-name"><a href="">{{k.TenSPKM}}</a></h5>
+
+                                    <div class="content_price">
+                                        <span class="price product-price"><span style="color: black">Đơn giá:</span>{{k.GiaKM | number:1.0-3 }}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="category-featured Vegetables">
+
+    <nav class="navbar nav-menu show-brand">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-brand" style="background-color:black; color:#FFF"><a href="#"> <img alt="" src="../Content/images/icon_like.png" />Sản Phẩm mới</a></div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+
+    </nav>
+    <div class="owl-carousel">
+        <div class="product-featured clearfix" style="position:relative">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="box-right">
+                        <!-- Other existing HTML structure remains unchanged -->
+                        <div class="product-list">
+                            <div ng-repeat="l in listdata | filter:Search | limitTo:itemsPerPage: (currentPage - 1 ) * itemsPerPage" class="col-sm-4 product-item" style="height: 300px">
+                                <div class="left-block">
+                                    <a ng-click="chitiet(l.MaSP)" style="height:180px">
+                                        <img class="img-rounded" alt="product" src="/Content/Images/{{l.Anh}}" />
+                                    </a>
+
+                                    <div class="quick-view">
+                                        <a title="Add to my wishlist" class="heart" href="#"></a>
+                                        <a title="Add to compare" class="compare" href="#"></a>
+                                        <a title="Quick view" href="~/Content/Images/{{l.Anh}}" class="search fancybox-button"></a>
+                                    </div>
+                                    <input ng-click="muahang(l.MaSP)" class="btn_muangay" type="button" value="MUA NGAY" />
+                                    <div class="bestseller"></div>
+                                </div>
+                                <div class="right-block">
+                                    <h5 class="product-name"><a ng-click="chitiet(l.MaSP)">{{l.TenSP}}</a></h5>
+
+                                    <div class="content_price">
+                                        <span class="price product-price"><span style="color: black">Đơn giá:</span>{{l.DonGia | number:1.0-3 }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pagination or other content might be here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

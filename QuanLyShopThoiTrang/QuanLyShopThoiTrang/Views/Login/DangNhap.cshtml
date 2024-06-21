@@ -1,0 +1,51 @@
+﻿@model QuanLyShopThoiTrang.Models.NguoiDung
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/Content/lib/bootstrap/css/bootstrap.min.css" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Register</title>
+</head>
+<body>
+    <div id="form-login">
+        @using (Html.BeginForm("DangNhap", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <th colspan="2" style="text-align:center; font-size:24px">Đăng nhập hệ thống </th>
+                </tr>
+                <tr>
+                    <td>EMAIL : </td>
+                    <td id="email"style="color:black; width:60%"> @Html.TextBoxFor(m => m.email, "", new { @class = "form-control", @placeholder = "Email" })</td>
+                </tr>
+                <tr>
+                    <td colspan="2">@Html.ValidationMessageFor(m => m.email)</td>
+                </tr>
+                <tr>
+                    <td>MẬT KHẨU : </td>
+                    <td id="matkhau" style="color:black; width:60%"> @Html.TextBoxFor(m => m.MatKhau, "", new { @class = "form-control", @placeholder = "MatKhau" })</td>
+                </tr>
+                <tr>
+                    <td colspan="2">@Html.ValidationMessageFor(m => m.MatKhau)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input class="btn btn-primary" type="submit" id="dn" value="Đăng nhập " />
+                        <input class="btn btn-primary" type="reset" value="đặt lại" />
+                        <a class="btn btn-primary" href="@Url.Action("DangKy","Login")">Đăng ký</a>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

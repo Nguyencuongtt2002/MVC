@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "SPDetail";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .btnStyle {
+        border-radius: 6px;
+        cursor: pointer;
+        color: red;
+        background-size: 200%;
+        padding: 13px;
+        width: 130px;
+        transition: all .5s !important;
+        outline: none;
+        border: none;
+    }
+
+   .btnStyle:focus {
+            outline: none;
+   }
+    .btn1 {
+        background-image: linear-gradient(to left,#FFC312,#EE5A24,#FFC312);
+    }
+
+    .btn2 {
+        font-size:9.66px;
+        height:46px;
+        background-image: linear-gradient(to left, #badc58,#6ab04c,#badc58);
+    }
+
+    .btnStyle:hover {
+        background-position: right;
+    }
+</style>
+<div class="columns-container">
+    <div class="container" id="columns">
+        <!-- row -->
+        <!-- ./left colunm -->
+        @Html.Partial("_MenuLeftLSP")
+        <!-- Center colunm-->
+        <div class="row" id="renderSearch">
+            <div class="col-sm-4 " data-aos="flip-right">
+                <a href="~/Images/{{anh}}" data-lightbox="listImg">
+                    <img src="~/Content/Images/{{anh}}" class="img-fluid" style="width:350px;height:430px" />
+                </a>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-weight: 400" class="pb-3" data-aos="fade-left">{{tensp}}</h2>
+                <h4 style="font-weight: 400" class="pb-3" data-aos="fade-left">Giá: <span class="text-danger">{{dongia | number: 1.0-3}} VNĐ</span></h4>
+
+                <a>
+                    <button  ng-click="muahang(masp)" type="button" class="btnStyle btn1 mr-3" data-aos="fade-left" data-aos-duration="1000">
+                        THÊM VÀO GIỎ
+                    </button>
+                </a>
+                <button class="btnStyle btn2" data-aos="fade-left" data-aos-duration="1000"><a href="@Url.Action("SanPhamPartial","SanPham")" class="text-white" style="text-decoration: none">XEM THÊM SẢN PHẨM</a></button>
+                <br />
+                <br />
+                <hr />
+                <p data-aos="fade-left" data-aos-duration="1000">Mã sản phẩm: {{masp}}</p>
+                <hr />
+            </div>
+            <div class="product-tab" style="margin-left:290px">
+                <ul class="nav-tab" style="margin-bottom: 0px;">
+                    <li class="active">
+                        <a aria-expanded="false" data-toggle="tab" href="#product-detail">Chi tiết</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="true" data-toggle="tab" href="#comment">Bình luận</a>
+                    </li>
+
+                </ul>
+                <div class="tab-container">
+                    <div id="product-detail" class="tab-panel active">
+                        <p>
+                            {{mota}}
+                        </p>
+                    </div>
+                    <div id="comment" class="tab-panel">
+                        <div class="fb-comments" data-href="https://www.facebook.com/hungdng.92"
+                             data-width="100%" data-numposts="5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

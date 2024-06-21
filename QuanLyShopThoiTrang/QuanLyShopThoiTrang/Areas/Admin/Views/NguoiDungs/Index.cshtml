@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row" ng-app="myApp" ng-controller="NguoiDungsController">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Quản lý người dùng  <small></small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <p class="text-muted font-13 m-b-30">
+                    <button class="btn btn-primary fa fa-plus" data-toggle="modal" ng-click="taomoi()" data-target="#exampleModal">Tạo mới</button>
+                </p>
+                <p style="float:right">Hiển thị: <input style="width:50px" type="number" min="1" ng-model="HienThiSoLuong" /></p>
+                <table id="datatable" class="table table-striped table-bordered table-hover">
+
+                    <thead>
+                        <tr>
+                            <th><a>TaiKhoan</a></th>
+                            <th>HoTen </th>
+                            <th>DiaChi</th>
+                            <th>Phone</th>
+                            <th>email</th>
+                            <th>MatKhau </th>
+                            <th>Confirm_MatKhau</th>
+                            <th colspan="3">Thao tác</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr ng-repeat="s in listdata  | orderBy:'-HoTen'| limitTo:HienThiSoLuong">
+                            <td value="name">{{s.TaiKhoan}}</td>
+                            <td>{{s.HoTen}}</td>
+                            <td>{{s.DiaChi}}</td>
+                            <td>{{s.Phone}}</td>
+                            <td>{{s.email}}</td>
+                            <td>{{s.MatKhau }}</td>
+                            <td>{{s.Confirm_MatKhau}}</td>
+                            <td>
+                                <span id="save" class="btn btn-primary glyphicon glyphicon-pencil" ng-click="getbyID(s)" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                            </td>
+                            <td>
+                                <span id="save" class="btn btn-info glyphicon glyphicon-question-sign" ng-click="getbyID(s)" data-toggle="modal" data-target="#detailModal">
+                                </span>
+                            </td>
+                            <td>
+                                <span id="save" class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletebyID(s)"
+
+                                </span>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width:1200px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Người Dùng </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form novalidate name="frmLoaiSP" id="frmLoaiSP" class="form-horizontal row-border">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Tài khoản</label>
+                                <div class="col-md-8"> <input type="text" id="idTaiKhoan" class="form-control" name="nameTaiKhoan" ng-model="TaiKhoan" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Họ Tên</label>
+                                <div class="col-md-8"> <input type="text" id="idHoTen" class="form-control" name="nameHoTen" ng-model="HoTen" /> </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Địa Chỉ</label>
+                                <div class="col-md-8"> <input type="text" id="nameDiaChi" class="form-control" name="nameDiaChi" ng-model="DiaChi" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Phone</label>
+                                <div class="col-md-8"> <input type="text" id="namePhone" class="form-control" name="namePhone" ng-model="Phone" /> </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Email</label>
+                                <div class="col-md-8"> <input type="text" id="nameEmail" class="form-control" name="nameEmail" ng-model="email" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mật Khẩu</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="nameMatKhau" class="form-control" name="nameMatKhau" ng-model="MatKhau " />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Confirm_MatKhau</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="idConfirm_MatKhau" class="form-control" name="nameConfirm_MatKhau" ng-model="Confirm_MatKhau" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6"> </div>
+                            <div class="col-md-2">
+                                <span id="save" class="btn btn-success margin-right-btn" ng-click="CreateUpdate()">
+                                    <i icon-save"></i> {{btnText}}
+                                </span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+
+        @*/---------------------------------------------- chi tiết -------------------------------/*@
+    </div>
+    
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/JS/CrudService.js"></script>
+    <script src="~/Areas/Admin/JS/NguoiDungs.js"></script>
+}
+
+
+
+

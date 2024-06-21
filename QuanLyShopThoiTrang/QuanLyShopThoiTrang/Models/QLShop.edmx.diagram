@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6145edefb7a747e58494e57f8379baf1" Name="Diagram1">
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.CTDonHang" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.DonHang" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.HDN" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.KhachHang" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.KhuyenMai" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.NguoiDung" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.NhaCungCap" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.SanPham" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.TinTuc" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn3_NguyenVanCuongModel.ThuongHieu" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__CTDonHang__MaDH__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__CTDonHang__MaSP__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__DonHang__MaKH__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__DonHang__MaNV__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__HDN__MaNCC__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__HDN__MaNV__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__HDN__MaSP__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__KhuyenMai__MaSP__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__SanPham__MaLoaiS__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__TinTuc__MaNV__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn3_NguyenVanCuongModel.FK__SanPham__MaThuon__5441852A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

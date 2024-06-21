@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row" ng-app="myApp" ng-controller="HDNAdController">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Quản lý Hóa Đơn Nhập <small></small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <p class="text-muted font-13 m-b-30">
+                    <button class="btn btn-primary fa fa-plus" data-toggle="modal" ng-click="taomoi()" data-target="#exampleModal">Tạo mới</button>
+                </p>
+                <p style="float:right">Hiển thị: <input style="width:50px" type="number" min="1" ng-model="HienThiSoLuong" /></p>
+                <table id="datatable" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>MaHDN </th>
+                            <th>MaNV</th>
+                            <th>MaNCC</th>
+                            <th>Đơn giá</th>
+                            <th>Số Lượng</th>
+                            <th colspan="3">Thao tác</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <tr ng-repeat="s in listdata | limitTo:HienThiSoLuong">
+                            <td>{{s.MaHDN }}</td>
+                            <td>{{s.MaNV}}</td>
+                            <td>{{s.MaNCC}}</td>
+                            <td>{{s.DonGia}}</td>
+                            <td>{{s.SoLuong }}</td>
+                            <td>
+                                <span id="save" class="btn btn-primary glyphicon glyphicon-pencil" ng-click="getbyID(s)" data-toggle="modal" data-target="#exampleModal">
+                                </span>
+                            </td>
+                            <td>
+                                <span id="save" class="btn btn-info glyphicon glyphicon-question-sign" ng-click="getbyID(s)" data-toggle="modal" data-target="#detailModal">
+                                </span>
+                            </td>
+                            <td>
+                                <span id="save" class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletebyID(s)"
+
+                                </span>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width:980px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hóa Đơn Nhập </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form novalidate name="frmHDN" id="frmHDN" class="form-horizontal row-border">
+                        <div class="col-sm-6">
+                            @*<div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã HDN :</label>
+                                <div class="col-md-8"> <input type="text" id="idMaSanPham" class="form-control" name="nameMaSP" ng-model="MaHDN " /> </div>
+                            </div>*@
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã NV :</label>
+                                <div class="col-md-8"> <input type="text" id="idMaNV" class="form-control" name="nameMaNV" ng-model="MaNV" /></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã NCC :</label>
+                                <div class="col-md-8"> <input type="text" id="idMaNCC" class="form-control" name="nameMaNCC" ng-model="MaNCC" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã SP :</label>
+                                <div class="col-md-8">
+                                    @*<input type="text" id="idMaSP" class="form-control" name="nameMaSP" ng-model="MaSP" />*@
+                                    <select class="form-control" ng-model="MaSP">
+                                        <option ng-repeat="sp in SP" value="{{sp.MaSP}}">
+                                            {{sp.TenSP}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">NgayNhap :</label>
+                                <div class="col-md-8">
+                                    <input type="date" id="idNgayNhap" class="form-control" name="nameNgayNhap" ng-model="NgayNhap" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">SoLuong :</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="idSoLuong" class="form-control" name="nameSoLuong" ng-model="SoLuong" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> DonGia :</label>
+                                <div class="col-md-8"> <input type="text" id="idDonGia" class="form-control" name="nameDonGia" ng-model="DonGia" /> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Tổng Tiền : </label>
+                                <div class="col-md-8"> <input type="text" id="idTongTien" class="form-control" name="nameTongTien" ng-model="DonGia * SoLuong"  /> </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6"> </div>
+                            <div class="col-md-2">
+                                <span id="save" class="btn btn-success margin-right-btn" ng-click="CreateUpdate()">
+                                    <i icon-save"></i> {{btnText}}
+                                </span>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+
+    @*/---------------------------------------------- chi tiết -------------------------------/*@
+
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModal" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width:980px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chi Tiết Hóa Đơn Nhập : </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form novalidate name="frmHDN" id="frmHDN" class="form-horizontal row-border">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã HDN :</label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{MaHDN}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã NV :</label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{MaNV}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Mã NCC : </label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{MaNCC}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Mã SP :</label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{MaSP}}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Ngày Nhập : </label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{NgayNhap | date: 'dd/MM/yyyy'}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Số Lượng : </label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{SoLuong}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17"> Đơn Giá: </label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{DonGia|  number: 1.0-3}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="input17">Tổng Tiền :</label>
+                                <div class="col-md-8" style="margin-top:8px">
+                                    {{SoLuong * DonGia |  number: 1.0-3}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/JS/CrudService.js"></script>
+    <script src="~/Areas/Admin/JS/HDN.js"></script>
+}
+
+

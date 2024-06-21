@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chào mừng bạn đến với trang quản trị! | </title>
+
+    <!-- Bootstrap -->
+    <link href="/Areas/Admin/Data/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/Areas/Admin/Data/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/Areas/Admin/Data/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/Areas/Admin/Data/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/Areas/Admin/Data/build/css/custom.min.css" rel="stylesheet">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                @Html.Partial("_MenuLeftAd")
+                <!-- /sidebar menu -->
+                <!-- /menu footer buttons -->
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+        <!-- top navigation -->
+        @Html.Partial("_MenuTopAd")
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/Areas/Admin/Data/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/Areas/Admin/Data/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/Areas/Admin/Data/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/Areas/Admin/Data/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="/Areas/Admin/Data/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="/Areas/Admin/Data/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- Flot -->
+    <script src="/Areas/Admin/Data/vendors/Flot/jquery.flot.js"></script>
+    <script src="/Areas/Admin/Data/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="/Areas/Admin/Data/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="/Areas/Admin/Data/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="/Areas/Admin/Data/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="/Areas/Admin/Data/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="/Areas/Admin/Data/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="/Areas/Admin/Data/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="/Areas/Admin/Data/vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="/Areas/Admin/Data/vendors/moment/min/moment.min.js"></script>
+    <script src="/Areas/Admin/Data/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+    <!-- Custom Theme Scripts -->
+    <script src="/Areas/Admin/Data/build/js/custom.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Areas/Admin/JS/App.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+
+</html>
+
